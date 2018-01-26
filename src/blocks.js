@@ -95,6 +95,10 @@ export default (editor, opt = {}) => {
     }
   </style>
   ` : '';
+  let links = ``;
+  for(let i=0; i<labels.length; i++) {
+    links += `<a href="/${c.links[i]}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]">${c.labels[i]}</a>`;
+  }
 
   if (c.blocks.indexOf(hNavbarRef) >= 0) {
     bm.add(hNavbarRef, {
