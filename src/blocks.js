@@ -39,8 +39,6 @@ export default (editor, opt = {}) => {
       vertical-align: top;
       display: inline-block;
       padding: 5px;
-      max-height: 80px;
-      max-width: 300px;
       min-height: 50px;
       min-width: 50px;
       color: inherit;
@@ -48,8 +46,8 @@ export default (editor, opt = {}) => {
     }
 
     .${navbarPfx}-brand img {
-      height: 100%;
-      width: 100%;
+      max-height: 80px;
+      max-width: 300px;
     }
 
     .${navbarPfx}-menu {
