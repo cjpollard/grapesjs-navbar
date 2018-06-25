@@ -10,6 +10,7 @@ export default grapesjs.plugins.add('gjs-navbar', (editor, opts = {}) => {
 
   let defaults = {
     blocks: [hNavbarRef],
+    branding: '',
     defaultStyle: 1,
     navbarClsPfx: 'navbar',
     labelNavbar: 'Navbar',

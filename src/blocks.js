@@ -39,10 +39,17 @@ export default (editor, opt = {}) => {
       vertical-align: top;
       display: inline-block;
       padding: 5px;
+      max-height: 80px;
+      max-width: 300px;
       min-height: 50px;
       min-width: 50px;
       color: inherit;
       text-decoration: none;
+    }
+
+    .${navbarPfx}-brand img {
+      height: 100%;
+      width: 100%;
     }
 
     .${navbarPfx}-menu {
@@ -117,7 +124,7 @@ export default (editor, opt = {}) => {
             data-gjs-removable="false" data-gjs-copyable="false" data-gjs-highlightable="false"
             data-gjs-custom-name="${c.labelNavbarContainer}">
 
-            <a href="/" class="${navbarPfx}-brand" data-gjs-droppable="true"></a>
+            <a href="/" class="${navbarPfx}-brand" data-gjs-droppable="true">${c.branding}</a>
 
             <div class="${navbarPfx}-burger" data-gjs-type="burger-menu">
               <div class="${navbarPfx}-burger-line" data-gjs-custom-name="${c.labelBurgerLine}" data-gjs-droppable="false" data-gjs-draggable="false"></div>
