@@ -101,8 +101,8 @@ export default (editor, opt = {}) => {
   </style>
   ` : '';
   let links = ``;
-  for(let i=0; i<c.labels.length; i++) {
-    links += `<a href="/${c.links[i]}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]">${c.labels[i]}</a>`;
+  for(let navOpt of c.navLinks) {
+    links += `<a href="/${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]">${navOpt.label}</a>`;
   }
 
   if (c.blocks.indexOf(hNavbarRef) >= 0) {

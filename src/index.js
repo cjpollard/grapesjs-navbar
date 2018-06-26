@@ -21,8 +21,11 @@ export default grapesjs.plugins.add('gjs-navbar', (editor, opts = {}) => {
     labelBurgerLine: 'Burger Line',
     labelNavbarBlock: 'Navbar',
     labelNavbarCategory: 'Extra',
-    labels: ['Home', 'About', 'Contact'],
-    links: ['', 'about', 'contact']
+    navLinks: [
+      {label: 'Home', link: ''},
+      {label: 'About', link: 'about'},
+      {label: 'Contact', link: 'contact'}
+    ]
   };
 
   // Load defaults
