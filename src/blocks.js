@@ -57,12 +57,21 @@ export default (editor, opt = {}) => {
       margin: 0;
     }
 
+    .${navbarPfx}-menu li {
+      list-style: none;
+      display: inline-block;
+    }
+
     .${navbarPfx}-menu-link {
       margin: 0;
       color: inherit;
       text-decoration: none;
       display: inline-block;
       padding: 10px 15px;
+    }
+
+    .${navbarPfx}-subpages {
+      display: none;
     }
 
     .${navbarPfx}-burger {
@@ -100,10 +109,25 @@ export default (editor, opt = {}) => {
     }
   </style>
   ` : '';
-  let links = ``;
-  for(let navOpt of c.navLinks) {
-    links += `<a href="/${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]">${navOpt.label}</a>`;
+
+  let links = `<ul>`;
+
+  const populateNavBar = (linkArray) => {
+    let navLinks = ``;
+    for(let navOpt of linkArray) {
+      navLinks += `<li><a href="/${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]">${navOpt.label}</a>`;
+      if(navOpt.subpages.length > 0) {
+        navLinks += `<ul class="${navbarPfx}-subpages">`;
+        navLinks += populateNavBar(navOpt.subpages);
+        navLinks += `</ul>`;
+      }
+      navLinks += `</li>`;
+    }
+    return navLinks;
   }
+
+  links = populateNavBar(c.navLinks);
+  links += `</ul>`;
 
   if (c.blocks.indexOf(hNavbarRef) >= 0) {
     bm.add(hNavbarRef, {
