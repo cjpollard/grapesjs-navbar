@@ -4,6 +4,36 @@ export default (editor, opt = {}) => {
   const defaultType = dc.getType('default');
   const defaultModel = defaultType.model;
   const burgerType = 'burger-menu';
+  const navlinkType = 'navLink';
+  const navbarPfx = c.navbarClsPfx || 'navbar';
+
+  dc.addType(navlinkType, {
+    model: defaultModel.extend({
+      defaults: Object.assign({}, defaultModel.prototype.defaults, {
+        script: function () {
+          var clickHandler = function(e) {
+            e.preventDefault();
+            $('.navbar-subpages').toggle();
+          }
+          this.addEventListener('click', clickHandler);
+          if (typeof $ == 'undefined') {
+            var script = document.createElement('script');
+            script.src = 'https://code.jquery.com/jquery-3.2.1.slim.min.js';
+            document.body.appendChild(script);
+          }
+        }
+      })
+    }, {
+      isComponent(el) {
+        if(el.getAttribute &&
+          el.getAttribute('data-gjs-type') == navlinkType) {
+          return {type: navlinkType};
+        }
+      },
+    }),
+    view: defaultType.view,
+  });
+
 
   dc.addType(burgerType, {
     model: defaultModel.extend({
