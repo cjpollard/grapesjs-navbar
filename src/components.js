@@ -5,14 +5,13 @@ export default (editor, opt = {}) => {
   const defaultModel = defaultType.model;
   const burgerType = 'burger-menu';
   const navlinkType = 'navLink';
-  const navbarPfx = c.navbarClsPfx || 'navbar';
 
   dc.addType(navlinkType, {
     model: defaultModel.extend({
       defaults: Object.assign({}, defaultModel.prototype.defaults, {
         script: function () {
           var clickHandler = function(e) {
-            e.preventDefault();
+            e && e.preventDefault();
             $('.navbar-subpages').toggle();
           }
           this.addEventListener('click', clickHandler);
