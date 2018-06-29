@@ -62,21 +62,26 @@ export default (editor, opt = {}) => {
       display: inline-block;
     }
 
+    .${navbarPfx}-menu li:hover > ul {
+      display: block;
+    }
+
+    .${navbarPfx}-menu li > ul {
+      display: none;
+      position: absolute;
+      padding-left: 0;
+      margin-top: 0;
+      background-color: #222;
+      color: #ddd;
+      min-height: 50px;
+    }
+
     .${navbarPfx}-menu-link {
       margin: 0;
       color: inherit;
       text-decoration: none;
       display: inline-block;
       padding: 10px 15px;
-    }
-
-    .${navbarPfx}-subpages {
-      display: none;
-      position: absolute;
-      padding-left: 0;
-      background-color: #222;
-      color: #ddd;
-      min-height: 50px;
     }
 
     .${navbarPfx}-burger {
