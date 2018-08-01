@@ -125,14 +125,13 @@ export default (editor, opt = {}) => {
   const populateNavBar = (linkArray) => {
     let navLinks = ``;
     for(let navOpt of linkArray) {
+      navLinks += navOpt.active ? `<li class="active">` : `<li>`
       if(navOpt.subpages.length > 0) {
-        navLinks += navOpt.active ? `<li class="active">` : `<li>`
         navLinks += `<a href="/${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]" data-gjs-type="navLink">${navOpt.label}</a>`;
         navLinks += `<ul class="${navbarPfx}-subpages">`;
         navLinks += populateNavBar(navOpt.subpages);
         navLinks += `</ul>`;
       } else {
-        navLinks += navOpt.active ? `<li class="active">` : `<li>`
         navLinks += `<a href="/${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]">${navOpt.label}</a>`;
       }
       navLinks += `</li>`;
