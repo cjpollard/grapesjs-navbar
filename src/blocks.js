@@ -62,6 +62,10 @@ export default (editor, opt = {}) => {
       display: inline-block;
     }
 
+    .${navbarPfx}-menu li.active {
+      background-color: #444;
+    }
+
     .${navbarPfx}-menu li:hover > ul {
       display: block;
     }
@@ -126,7 +130,7 @@ export default (editor, opt = {}) => {
     let navLinks = ``;
     for(let navOpt of linkArray) {
       navLinks += navOpt.active ? `<li class="active">` : `<li>`
-      if(navOpt.subpages.length > 0) {
+      if(navOpt.subpages && navOpt.subpages.length > 0) {
         navLinks += `<a href="/${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]" data-gjs-type="navLink">${navOpt.label}</a>`;
         navLinks += `<ul class="${navbarPfx}-subpages">`;
         navLinks += populateNavBar(navOpt.subpages);
