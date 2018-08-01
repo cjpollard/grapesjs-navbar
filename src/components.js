@@ -4,7 +4,6 @@ export default (editor, opt = {}) => {
   const defaultType = dc.getType('default');
   const defaultModel = defaultType.model;
   const burgerType = 'burger-menu';
-  const navlinkType = 'navLink';
 
   dc.addType(burgerType, {
     model: defaultModel.extend({

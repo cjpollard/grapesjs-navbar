@@ -126,12 +126,14 @@ export default (editor, opt = {}) => {
     let navLinks = ``;
     for(let navOpt of linkArray) {
       if(navOpt.subpages.length > 0) {
-        navLinks += `<li><a href="/${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]" data-gjs-type="navLink">${navOpt.label}</a>`;
+        navLinks += navOpt.active ? `<li class="active">` : `<li>`
+        navLinks += `<a href="/${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]" data-gjs-type="navLink">${navOpt.label}</a>`;
         navLinks += `<ul class="${navbarPfx}-subpages">`;
         navLinks += populateNavBar(navOpt.subpages);
         navLinks += `</ul>`;
       } else {
-        navLinks += `<li><a href="/${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]">${navOpt.label}</a>`;
+        navLinks += navOpt.active ? `<li class="active">` : `<li>`
+        navLinks += `<a href="/${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]">${navOpt.label}</a>`;
       }
       navLinks += `</li>`;
     }
