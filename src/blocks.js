@@ -80,12 +80,13 @@ export default (editor, opt = {}) => {
       min-height: 50px;
     }
 
-    .${navbarPfx}-menu-link {
+    .${navbarPfx}-menu-link.active {
       margin: 0;
       color: inherit;
       text-decoration: none;
       display: inline-block;
       padding: 10px 15px;
+      background-color: #444;
     }
 
     .${navbarPfx}-burger {
@@ -129,14 +130,15 @@ export default (editor, opt = {}) => {
   const populateNavBar = (linkArray) => {
     let navLinks = ``;
     for(let navOpt of linkArray) {
-      navLinks += navOpt.active ? `<li class="active">` : `<li>`
+      const active = navOpt.active ? " active" : "";
+      navLinks += `<li class="navbar-menu-li${active}">`;
       if(navOpt.subpages && navOpt.subpages.length > 0) {
-        navLinks += `<a href="${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]" data-gjs-type="navLink">${navOpt.label}</a>`;
+        navLinks += `<a href="${navOpt.link}" class="${navbarPfx}-menu-link${active}" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]" data-gjs-type="navLink">${navOpt.label}</a>`;
         navLinks += `<ul class="${navbarPfx}-subpages">`;
         navLinks += populateNavBar(navOpt.subpages);
         navLinks += `</ul>`;
       } else {
-        navLinks += `<a href="${navOpt.link}" class="${navbarPfx}-menu-link" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]">${navOpt.label}</a>`;
+        navLinks += `<a href="${navOpt.link}" class="${navbarPfx}-menu-link${active}" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]">${navOpt.label}</a>`;
       }
       navLinks += `</li>`;
     }
