@@ -80,12 +80,15 @@ export default (editor, opt = {}) => {
       min-height: 50px;
     }
 
-    .${navbarPfx}-menu-link.active {
+    .${navbarPfx}-menu-link {
       margin: 0;
       color: inherit;
       text-decoration: none;
       display: inline-block;
       padding: 10px 15px;
+    }
+
+    .${navbarPfx}-menu-link.active {
       background-color: #444;
     }
 
