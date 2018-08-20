@@ -62,15 +62,15 @@ export default (editor, opt = {}) => {
       display: inline-block;
     }
 
-    .${navbarPfx}-menu li.active {
+    .${navbarPfx}-menu-li.active {
       background-color: #444;
     }
 
-    .${navbarPfx}-menu li:hover > ul {
+    .${navbarPfx}-menu-li:hover > ul {
       display: block;
     }
 
-    .${navbarPfx}-menu li > ul {
+    .${navbarPfx}-menu-li > ul {
       display: none;
       position: absolute;
       padding-left: 0;
