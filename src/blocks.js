@@ -136,7 +136,7 @@ export default (editor, opt = {}) => {
       const active = navOpt.active ? " active" : "";
       navLinks += `<li class="navbar-menu-li${active}">`;
       if(navOpt.subpages && navOpt.subpages.length > 0) {
-        navLinks += `<a href="${navOpt.link}" class="${navbarPfx}-menu-link${active}" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]" data-gjs-type="navLink">${navOpt.label}</a>`;
+        navLinks += `<a href="${navOpt.link}" class="${navbarPfx}-menu-link${active}" data-gjs-custom-name="${c.labelMenuLink}" data-gjs-draggable="[data-gjs=${menuRef}]" data-gjs-type="link">${navOpt.label}</a>`;
         navLinks += `<ul class="${navbarPfx}-subpages">`;
         navLinks += populateNavBar(navOpt.subpages);
         navLinks += `</ul>`;
